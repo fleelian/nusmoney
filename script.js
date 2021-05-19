@@ -29,7 +29,7 @@ function addTransactionDOM(transaction) {
   )}</span> 
   `;
 
-  list.appendChild(deposit_item);
+//  list.appendChild(deposit_item);
 
   const loan_item = document.createElement('li');
 
@@ -40,21 +40,42 @@ function addTransactionDOM(transaction) {
   )}</span> 
   `;
 
-  list.appendChild(loan_item);
-}
+// list.appendChild(loan_item);
+
+  const balance_item = document.createElement('li');
+
+
+//  balance_item.classList.add('nett');
+
+var out = "";
+out = transaction.deposit - transaction.loan;  
+
+TransactionData.forEach(function(item){
+    if (out > 0){
+      balance_item.innerHTML = `${transaction.customername}-${transaction.bank} <span> $ ${out}</span>`;
+      balance_item.classList="plus";
+        }else{
+           balance_item.innerHTML = `${transaction.customername}-${transaction.bank}  <span> $ ${out}</span>`; 
+           balance_item.classList="minus";
+        }
+    }
+  );
+ 
+  list.appendChild(balance_item);
+  }
 
 // Update the balance, deposit and loan
 function updateValues() {
-  const deposits = TransactionData.map(transaction => transaction.deposit);
+  const deposits = TransactionData.map(transaction => transaction.deposit); //this line puts all deposits into an array
   const loans = TransactionData.map(transaction => transaction.loan);
-  const total_deposit = deposits.reduce((acc, item) => (acc += item), 0).toFixed(2);
+  const total_deposit = deposits.reduce((acc, item) => (acc += item), 0).toFixed(2); // reduce function takes 2 parameters, 1st = accumulator, item of certain position. Function is to add up all deposits
   const total_loan = loans.reduce((acc, item) => (acc += item), 0).toFixed(2);
   const bal = total_deposit - total_loan;
   balance.innerText = `$${bal}`;
   money_plus.innerText = `$${total_deposit}`;
   money_minus.innerText = `$${total_loan}`;
   reco.innerText = (bal >= 0)? "You Have Sound Financial Health": "Your Financial Health is Weak";
-}
+ }
 
 function init() {
   list.innerHTML = '';
