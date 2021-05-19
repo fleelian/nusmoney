@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #f7f7f7;  /*247,247,247*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,13 +22,23 @@ body {
 }
 
 .container {
-  margin: 30px auto;
-  width: 350px;
-}
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    padding-top: 20px;
+    margin: 30px auto;
+    text-align: center;
+    width: 350px; /*this is to fit mobile width*/
+  }
 
 h1 {
   letter-spacing: 1px;
   margin: 0;
+}
+
+h2 {
+  letter-spacing: 1px;
+  margin: 0;
+  Color: red;
 }
 
 h3 {
@@ -91,7 +101,7 @@ input[type='number'] {
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: #2251a8;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -125,12 +135,29 @@ input[type='number'] {
 }
 
 .list li.plus {
-  border-right: 5px solid #2ecc71;
+    background-color: #fff;
+    box-shadow: 20px(--box-shadow);
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px;
+    margin: 10px 0; 
+    border-right: 5px solid #2ecc71;
 }
 
 .list li.minus {
-  border-right: 5px solid #c0392b;
+    background-color: #fff;
+  box-shadow: var(--box-shadow);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+    border-right: 5px solid #c0392b;
 }
+
 
 .delete-btn {
   cursor: pointer;
